@@ -1,5 +1,4 @@
 def solution(num_list, n):
-    answer = []
-    for i in range(n-1,len(num_list)):
-        answer.append(num_list[i])
+    answer = num_list[n-1::]
+    
     return answer
