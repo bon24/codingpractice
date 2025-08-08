@@ -1,5 +1,4 @@
 def solution(s):
-    answer = ''
     lst=[]
     a=s.split(' ')
     for i in range(len(a)):
