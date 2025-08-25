@@ -4,13 +4,8 @@ def solution(babbling):
     say = ["aya", "ye", "woo", "ma"]
     for baby in babbling:
         for can in say:
-            if can in baby:
-                for i in say:
-                    baby = baby.replace(i," ")
-                check.append(baby)
-    for i in range(len(check)):
-        check[i]=check[i].replace(" ","")
-    for i in check:
-        if i=="":
+            baby = baby.replace(can," ")
+        if baby.strip()=="":
             answer+=1
+  
     return answer
