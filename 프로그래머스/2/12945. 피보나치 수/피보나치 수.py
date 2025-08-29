@@ -1,0 +1,6 @@
+def solution(n):
+    a, b = 0, 1   # F(0)=0, F(1)=1
+    for _ in range(2, n+1):  
+        a, b = b, (a+b)%1234567   # 두 값을 갱신하면서 전진
+    return b if n > 0 else a
+
