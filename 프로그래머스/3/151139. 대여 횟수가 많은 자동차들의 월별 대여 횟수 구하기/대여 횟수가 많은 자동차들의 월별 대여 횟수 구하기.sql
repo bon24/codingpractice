@@ -1,4 +1,5 @@
 -- 코드를 입력하세요
+# GROUP BY하면 GROUP BY에 쓰인 컬럼만 SELECT 할수있어서 이렇게 된듯?
 with car as (
     select CAR_ID
     from CAR_RENTAL_COMPANY_RENTAL_HISTORY
@@ -9,6 +10,7 @@ with car as (
 
 select month(START_DATE) as MONTH, CAR_ID, count(*) as RECORDS
 from CAR_RENTAL_COMPANY_RENTAL_HISTORY
-where START_DATE between '2022-08-01' and '2022-10-31' and CAR_ID in (select CAR_ID from car)
+where START_DATE between '2022-08-01' and '2022-10-31' 
+and CAR_ID in (select CAR_ID from car)
 group by month(START_DATE), CAR_ID
 order by MONTH asc, CAR_ID desc;
