@@ -1,4 +1,4 @@
 -- 코드를 입력하세요
-SELECT DATETIME
-FROM ANIMAL_INS
-WHERE DATETIME = (SELECT MIN(DATETIME) FROM ANIMAL_INS)
+select datetime
+from animal_ins
+where datetime = (select min(datetime) from animal_ins)
