@@ -1,12 +1,8 @@
--- 코드를 작성해주세요
-SELECT G.SCORE,E.EMP_NO,E.EMP_NAME,E.POSITION,E.EMAIL 
-FROM HR_EMPLOYEES AS E
-JOIN (
-    SELECT EMP_NO,SUM(SCORE) AS SCORE
-    FROM HR_GRADE
-    GROUP BY EMP_NO
-) AS G
-ON E.EMP_NO = G.EMP_NO
-ORDER BY SCORE DESC
-LIMIT 1
+# 테이블에서 2022년도 한해 평가 점수가 가장 높은 사원 정보를 조회하려 합니다.
+select SCORE, g.EMP_NO,EMP_NAME,POSITION,EMAIL
+from hr_employees e
+left join (select emp_no,sum(score) as score from hr_grade group by emp_no) g
+on e.EMP_NO = g.EMP_NO
+where score = (select max(score) from hr_employees e left join (select emp_no,sum(score) as score from hr_grade group by emp_no) g on e.EMP_NO = g.EMP_NO)
+
 
