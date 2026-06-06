@@ -1,11 +1,7 @@
 -- 코드를 작성해주세요
-SELECT ID,IFNULL(CHILD_COUNT,0) AS CHILD_COUNT
-FROM (
-    SELECT PARENT_ID,COUNT(*) AS CHILD_COUNT
-    FROM ECOLI_DATA
-    WHERE PARENT_ID IS NOT NULL
-    GROUP BY PARENT_ID) E
-RIGHT JOIN ECOLI_DATA AS D
-ON E.PARENT_ID = D.ID
-ORDER BY ID
+with cnt as(
+select parent_id,count(*) as cnt from ecoli_data where parent_id is not null group by parent_id)
 
+select d.id, ifnull(cnt,0) as child_count
+from ecoli_data d left join cnt c on d.id=c.parent_id
+order by 1
